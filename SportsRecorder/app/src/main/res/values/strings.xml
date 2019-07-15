@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Sports Recorder</string>
+    <string name="account">My Account</string>
+    <string name="my_saved_games">My Saved Games</string>
+    <string name="my_players">My Players</string>
+    <string name="record_game">Record a Game</string>
 </resources>
