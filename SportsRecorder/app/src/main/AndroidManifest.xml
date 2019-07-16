@@ -19,6 +19,9 @@
         <activity android:name=".SavedGames" />
         <activity android:name=".PlayerActivity" />
         <activity android:name=".RecordGameActivity" />
+        <activity android:name=".GameSetupActivity" />
+        <activity android:name=".HomeSetupActivity" />
+        <activity android:name=".AwaySetupActivity"></activity>
     </application>
 
 </manifest>

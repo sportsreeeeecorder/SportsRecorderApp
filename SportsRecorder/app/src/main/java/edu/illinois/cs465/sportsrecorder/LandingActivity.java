@@ -34,7 +34,7 @@ public class LandingActivity extends Activity implements View.OnClickListener {
             resultIntent = new Intent(LandingActivity.this, PlayerActivity.class);
             startActivity(resultIntent);
         } else if (v.getId() == R.id.newGame) {
-            resultIntent = new Intent(LandingActivity.this, RecordGameActivity.class);
+            resultIntent = new Intent(LandingActivity.this, GameSetupActivity.class);
             startActivity(resultIntent);
         }
     }
