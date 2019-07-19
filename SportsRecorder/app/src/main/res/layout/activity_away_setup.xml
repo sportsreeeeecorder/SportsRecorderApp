@@ -12,15 +12,17 @@
         android:layout_height="wrap_content"
         android:text="Away Information"/>
 
-    <TextView
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Team Name: "/>
+        android:id="@+id/awayNameField"
+        android:hint="Team Name"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Color: [ ] [X] [ ] "/>
+        android:id="@+id/awayColorField"
+        android:text="Color: blue"/>
 
     <Button
         android:layout_width="match_parent"

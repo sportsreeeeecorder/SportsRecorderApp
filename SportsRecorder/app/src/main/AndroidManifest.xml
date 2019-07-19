@@ -9,6 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".PlayerInfoActivity"></activity>
+        <activity android:name=".GameStatsActivity" />
         <activity android:name=".LandingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,7 +23,7 @@
         <activity android:name=".RecordGameActivity" />
         <activity android:name=".GameSetupActivity" />
         <activity android:name=".HomeSetupActivity" />
-        <activity android:name=".AwaySetupActivity"></activity>
+        <activity android:name=".AwaySetupActivity" />
     </application>
 
 </manifest>
