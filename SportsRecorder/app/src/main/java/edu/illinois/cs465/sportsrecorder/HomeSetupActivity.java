@@ -59,7 +59,7 @@ public class HomeSetupActivity extends Activity {
                 try {
                     for(DataSnapshot player: dataSnapshot.getChildren()) {
                         userLookupList.put(player.getValue().toString(), player.getKey());
-                        generateUI(player.getKey(), player.getValue().toString());
+                        generateUI(player.getValue().toString(), player.getKey());
                     }
                 } catch (NullPointerException e) {
 
@@ -89,7 +89,7 @@ public class HomeSetupActivity extends Activity {
                 Intent homeToAwayIntent = new Intent(HomeSetupActivity.this, AwaySetupActivity.class);
                 for(int i = 0; i < selectedPlayers.size(); i++) {
                     for(int j = 0; j < 7; j++) {
-                        gameRef.child("games").child("players").child("home").child(selectedPlayers.get(i)).child("" + j).setValue(0);
+                        gameRef.child("games").child(gameCode).child("players").child("home").child(selectedPlayers.get(i)).child("" + j).setValue(0);
                     }
                 }
                 homeToAwayIntent.putExtra(getString(R.string.intentHomePlayersList), selectedPlayers.toArray());
