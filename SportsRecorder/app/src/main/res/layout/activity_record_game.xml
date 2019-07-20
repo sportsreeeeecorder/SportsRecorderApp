@@ -1,69 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".RecordGameActivity" >
+    android:background="@drawable/basketballcourt"
+    android:orientation="horizontal"
+    tools:context=".RecordGameActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:gravity="left"
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/button4"
-            android:layout_width="match_parent"
+            android:id="@+id/buttonPlus1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:layout_weight="1"
+            android:text="+1" />
 
         <Button
-            android:id="@+id/button3"
-            android:layout_width="match_parent"
+            android:id="@+id/buttonPlus2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:layout_weight="1"
+            android:text="+2" />
 
         <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
+            android:id="@+id/buttonPlus3"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:layout_weight="1"
+            android:text="+3" />
 
         <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
+            android:id="@+id/buttonAssist"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:layout_weight="1"
+            android:text="+Assit" />
+
+        <Button
+            android:id="@+id/button1-1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="+Rebond" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="542dp"
+        android:layout_height="64dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="TextView" />
+            android:text="19"
+            android:textSize="35dp"/>
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="TextView" />
+            android:text="03:19"
+            android:textSize="35dp"/>
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="TextView" />
+            android:text="17"
+            android:textSize="35dp"/>
     </LinearLayout>
+
+
+    <!--<android.support.v7.widget.AppCompatButton-->
+        <!--style="@style/Widget.AppCompat.Button.Colored"-->
+        <!--android:id="@+id/GGbutton"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="End game"-->
+        <!--android:layout_gravity="top|right"-->
+        <!--android:baselineAligned="false"-->
+        <!--/>-->
+
+    <Button
+        android:id="@+id/GGbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="top|right"
+        android:text="End game"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/white"/>
+
 
 </LinearLayout>
