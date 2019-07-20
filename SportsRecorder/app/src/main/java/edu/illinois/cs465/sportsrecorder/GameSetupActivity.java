@@ -15,7 +15,7 @@ public class GameSetupActivity extends Activity {
 
     Button gameToHomeButton;
     DatabaseReference gameRef;
-    String gameCode = UserInfo.gameCode;
+    String gameCode;
     TextView gameCodeView;
     EditText locationField, nameField;
 
@@ -23,6 +23,9 @@ public class GameSetupActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_setup);
+
+        UserInfo.gameCode = generateCode(4);
+        gameCode = UserInfo.gameCode;
 
         gameCodeView = (TextView) findViewById(R.id.gameCode);
         gameCodeView.setText("Code: " + gameCode);
@@ -45,7 +48,7 @@ public class GameSetupActivity extends Activity {
                     gameRef.child("games").child(gameCode).child("location").setValue(locationField.getText().toString());
                 }
 
-                gameRef.child("users").child(UserInfo.userId).child("saved_games").child("1").setValue(gameCode);
+                gameRef.child("users").child(UserInfo.userId).child("saved_games").child(gameCode).setValue(nameField.getText().toString());
 
                 Intent gameToHomeIntent = new Intent(GameSetupActivity.this, HomeSetupActivity.class);
                 startActivity(gameToHomeIntent);
@@ -53,4 +56,16 @@ public class GameSetupActivity extends Activity {
             }
         });
     }
+
+    String generateCode(int pLength) {
+        String retString = "";
+        String alphaNums[] = {"0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+
+        for(int i = 0; i < pLength; i++) {
+            retString += alphaNums[(int) (Math.random()*alphaNums.length)];
+        }
+
+        return retString;
+    }
+
 }

@@ -28,7 +28,18 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/loadHomePlayerListButton"
         android:text="Add Player"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/addHomePlayerList"
+        android:visibility="gone"
+        >
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

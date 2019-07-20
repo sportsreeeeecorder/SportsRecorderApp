@@ -13,10 +13,29 @@
         android:layout_height="wrap_content"
         android:text="@string/my_players" />
 
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="+" />
+        android:orientation="vertical">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:id="@+id/addPlayerField"
+            android:hint="Enter your code here"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:id="@+id/addPlayerSubmit"
+            android:text="Search"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/addPlayerPlus"
+            android:text="+"
+            android:visibility="visible" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

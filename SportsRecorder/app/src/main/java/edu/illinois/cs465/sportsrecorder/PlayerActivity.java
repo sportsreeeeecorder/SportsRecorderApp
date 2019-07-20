@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -14,15 +16,18 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.annotations.Nullable;
 
 import androidx.annotation.NonNull;
 
 public class PlayerActivity extends Activity {
 
-    DatabaseReference savedPlayersRef;
+    DatabaseReference savedPlayersRef, newPlayerRef;
     LinearLayout savedPlayersLayout;
     LinearLayout.LayoutParams layoutParams;
+    Button addPlayerPlus, addPlayerSubmit;
+    EditText playerNameField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +37,65 @@ public class PlayerActivity extends Activity {
 
         savedPlayersLayout = (LinearLayout) findViewById(R.id.savedPlayersList);
 
+        addPlayerPlus = (Button) findViewById(R.id.addPlayerPlus);
+        playerNameField = (EditText) findViewById(R.id.addPlayerField);
+        addPlayerSubmit = (Button) findViewById(R.id.addPlayerSubmit);
+
         layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        addPlayerSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(playerNameField.length() != 5) {
+                    String generatedCode = generateCode(5);
+                    addPlayerSubmit.setText(generatedCode);
+                    newPlayerRef = FirebaseDatabase.getInstance().getReference();
+                    newPlayerRef.child("players").child(generatedCode).child("player_name").setValue(playerNameField.getText().toString());
+                    for(int i = 0; i < 7; i++) {
+                        newPlayerRef.child("players").child(generatedCode).child("career_stats").child(""+i).setValue(0);
+                    }
+                    newPlayerRef.child("users").child(UserInfo.userId).child("saved_players").child(generatedCode).setValue(playerNameField.getText().toString());
+                    Intent switchToViewActivity = new Intent(PlayerActivity.this, PlayerInfoActivity.class);
+                    switchToViewActivity.putExtra(getString(R.string.intentPlayerID), generatedCode);
+                    startActivity(switchToViewActivity);
+                    finish();
+                }
+                newPlayerRef = FirebaseDatabase.getInstance().getReference().child("players").child(playerNameField.getText().toString());
+                newPlayerRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        try {
+                            for(DataSnapshot item: dataSnapshot.getChildren()) {
+                                if(item.getKey().equals("player_name")) {
+                                    newPlayerRef.getParent().getParent().child("users").child(UserInfo.userId).child("saved_players").child(playerNameField.getText().toString()).setValue(item.getValue());
+                                    Intent switchToViewActivity = new Intent(PlayerActivity.this, PlayerInfoActivity.class);
+                                    switchToViewActivity.putExtra(getString(R.string.intentPlayerID), playerNameField.getText().toString());
+                                    startActivity(switchToViewActivity);
+                                    finish();
+                                }
+                            }
+                        } catch (NullPointerException e) {
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        });
+
+        addPlayerPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                playerNameField.setVisibility(View.VISIBLE);
+                addPlayerSubmit.setVisibility(View.VISIBLE);
+
+                addPlayerPlus.setVisibility(View.GONE);
+            }
+        });
 
         savedPlayersRef = FirebaseDatabase.getInstance().getReference().child("users").child(UserInfo.userId).child("saved_players");
         savedPlayersRef.addChildEventListener(new ChildEventListener() {
@@ -87,5 +150,16 @@ public class PlayerActivity extends Activity {
         textView.setHint(pID);
         textView.setHapticFeedbackEnabled(true);
         textView.setOnClickListener(playerClickListener);
+    }
+
+    String generateCode(int pLength) {
+        String retString = "";
+        String alphaNums[] = {"0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+
+        for(int i = 0; i < pLength; i++) {
+            retString += alphaNums[(int) (Math.random()*alphaNums.length)];
+        }
+
+        return retString;
     }
 }

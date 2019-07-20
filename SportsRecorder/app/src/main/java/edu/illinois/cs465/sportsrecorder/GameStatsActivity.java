@@ -3,6 +3,7 @@ package edu.illinois.cs465.sportsrecorder;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -50,7 +51,7 @@ public class GameStatsActivity extends Activity {
         gameInfoRef = FirebaseDatabase.getInstance().getReference().child("games").child(gameCode);
         gameInfoRef.addChildEventListener(new ChildEventListener() {
             @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+            public void onChildAdded(@NonNull final DataSnapshot dataSnapshot, @Nullable String s) {
                 String branch = dataSnapshot.getKey();
                 if(branch.equals("events")) {
                     for(DataSnapshot quarterSnapshots: dataSnapshot.getChildren()) {
@@ -90,9 +91,10 @@ public class GameStatsActivity extends Activity {
                     for(DataSnapshot teamPlayers: dataSnapshot.getChildren()) {
                         for(DataSnapshot player: teamPlayers.getChildren()) {
                             currentPlayer = player.getKey();
-                            gameInfoRef.getParent().getParent().child("players").child(currentPlayer).child("name").addListenerForSingleValueEvent(new ValueEventListener() {
+                            gameInfoRef.getParent().getParent().child("players").child(currentPlayer).child("player_name").addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot nameDataSnapshot) {
+                                    Log.d("LOG", "FIREBASE: retrieved datasnapshot of value " + nameDataSnapshot.toString());
                                     try {
                                         generateUI(nameDataSnapshot.getValue().toString(), currentPlayer, ADD_PLAYER);
                                     } catch (NullPointerException e) {
