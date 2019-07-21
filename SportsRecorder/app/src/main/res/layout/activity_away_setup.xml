@@ -12,20 +12,33 @@
         android:layout_height="wrap_content"
         android:text="Away Information"/>
 
-    <TextView
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Team Name: "/>
+        android:id="@+id/awayNameField"
+        android:hint="Team Name"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Color: [ ] [X] [ ] "/>
+        android:id="@+id/awayColorField"
+        android:text="Color: blue"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/loadAwayPlayerListButton"
         android:text="Add Player"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/addAwayPlayerList"
+        android:visibility="gone"
+        >
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

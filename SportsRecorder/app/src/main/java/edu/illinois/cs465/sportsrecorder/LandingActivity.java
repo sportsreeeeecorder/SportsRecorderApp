@@ -6,11 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import androidx.cardview.widget.CardView;
-
 public class LandingActivity extends Activity implements View.OnClickListener {
 
-    CardView savedGamesButton, playersButton, newGameButton;
+    Button savedGamesButton, playersButton, newGameButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,9 +16,9 @@ public class LandingActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_landing);
         getActionBar().hide();
 
-        savedGamesButton = (CardView) findViewById(R.id.savedGames);
-        playersButton = (CardView) findViewById(R.id.savedPlayers);
-        newGameButton = (CardView) findViewById(R.id.newGame);
+        savedGamesButton = (Button) findViewById(R.id.savedGames);
+        playersButton = (Button) findViewById(R.id.savedPlayers);
+        newGameButton = (Button) findViewById(R.id.newGame);
 
         savedGamesButton.setOnClickListener(this);
         playersButton.setOnClickListener(this);

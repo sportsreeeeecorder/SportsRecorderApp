@@ -13,20 +13,33 @@
         android:layout_height="wrap_content"
         android:text="Home Information"/>
 
-    <TextView
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Team Name: "/>
+        android:id="@+id/homeNameField"
+        android:hint="Team Name"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Color: [ ] [X] [ ] "/>
+        android:id="@+id/homeColorField"
+        android:text="Color: red"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/loadHomePlayerListButton"
         android:text="Add Player"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/addHomePlayerList"
+        android:visibility="gone"
+        >
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,12 +58,11 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="[ ]"/>
-
         <Button
-            android:id="@+id/homeToAway"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Next" />
+            android:id="@+id/homeToAway"
+            android:text="Next"/>
     </LinearLayout>
 
 </LinearLayout>
