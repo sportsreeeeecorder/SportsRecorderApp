@@ -6,101 +6,149 @@
     android:layout_height="match_parent"
     android:background="@drawable/basketballcourt"
     android:orientation="horizontal"
-    tools:context=".RecordGameActivity">
+    tools:context=".RecordGameActivity"
+    android:baselineAligned="false">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:gravity="left"
-        android:orientation="vertical">
+        android:gravity="start"
+        android:orientation="vertical"
+        android:layout_weight="0">
 
         <Button
-            android:id="@+id/buttonPlus1"
+            android:id="@+id/buttonPlus1-1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="+1" />
+            android:text="@string/_1" />
 
         <Button
-            android:id="@+id/buttonPlus2"
+            android:id="@+id/buttonPlus2-1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="+2" />
+            android:text="@string/_2" />
 
         <Button
-            android:id="@+id/buttonPlus3"
+            android:id="@+id/buttonPlus3-1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="+3" />
+            android:text="@string/_3" />
 
         <Button
-            android:id="@+id/buttonAssist"
+            android:id="@+id/buttonAssist1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="+Assit" />
+            android:text="@string/assit" />
 
         <Button
-            android:id="@+id/button1-1"
+            android:id="@+id/buttonRebond1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="+Rebond" />
+            android:text="@string/rebond" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="542dp"
-        android:layout_height="64dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:orientation="horizontal">
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="19"
-            android:textSize="35dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="03:19"
-            android:textSize="35dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/_19"
+                android:textSize="35sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="231dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/_03_19"
+                android:textSize="35sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/_17"
+                android:textSize="35sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="17"
-            android:textSize="35dp"/>
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/GGbutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/colorPrimary"
+                android:text="@string/end_game"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
     </LinearLayout>
 
-
-    <!--<android.support.v7.widget.AppCompatButton-->
-        <!--style="@style/Widget.AppCompat.Button.Colored"-->
-        <!--android:id="@+id/GGbutton"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="End game"-->
-        <!--android:layout_gravity="top|right"-->
-        <!--android:baselineAligned="false"-->
-        <!--/>-->
-
-    <Button
-        android:id="@+id/GGbutton"
+    
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_gravity="top|right"
-        android:text="End game"
-        android:background="@color/colorPrimary"
-        android:textColor="@android:color/white"/>
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:orientation="vertical"
+        android:layout_weight="0">
+
+        <Button
+            android:id="@+id/buttonPlus1-2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/_1" />
+
+        <Button
+            android:id="@+id/buttonPlus2-2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/_2" />
+
+        <Button
+            android:id="@+id/buttonPlus3-2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/_3" />
+
+        <Button
+            android:id="@+id/buttonAssist2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/assit" />
+
+        <Button
+            android:id="@+id/buttonRebond2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/rebond" />
+    </LinearLayout>
 
 
 </LinearLayout>

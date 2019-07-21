@@ -9,4 +9,13 @@
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="intentGameID">INTENT_GAME_ID</string>
     <string name="intentPlayerID">INTENT_PLAYER_ID</string>
+    <string name="rebond">+Rebond</string>
+    <string name="_1">+1</string>
+    <string name="_2">+2</string>
+    <string name="_3">+3</string>
+    <string name="assit">+Assit</string>
+    <string name="_19">19</string>
+    <string name="_03_19">03:19</string>
+    <string name="_17">17</string>
+    <string name="end_game">End game</string>
 </resources>
