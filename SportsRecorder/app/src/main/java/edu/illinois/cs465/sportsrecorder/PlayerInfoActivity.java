@@ -41,7 +41,6 @@ public class PlayerInfoActivity extends Activity {
         setContentView(R.layout.activity_player_info);
         getActionBar().hide();
 
-
         playerID = getIntent().getStringExtra(getString(R.string.intentPlayerID));
 
         savedPlayerInfoLayout = (LinearLayout) findViewById(R.id.playersStatsLayout);
@@ -72,7 +71,7 @@ public class PlayerInfoActivity extends Activity {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot nameDataSnapshot) {
                                 try {
-                                    generateUI(nameDataSnapshot.getValue().toString(), currentGameRef, ADD_PLAYER_GAME);
+                                    generateUI(nameDataSnapshot.getValue().toString(), nameDataSnapshot.getRef().getParent().getKey(), ADD_PLAYER_GAME);
                                 } catch (NullPointerException e) {
                                     unknownGames++;
                                 }
@@ -92,7 +91,13 @@ public class PlayerInfoActivity extends Activity {
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
+                String branch = dataSnapshot.getKey();
+                if(branch.equals("career_stats")) {
+                    Log.d("LOG", "FIREBASE: about to add player info from snapshot: " + dataSnapshot.toString());
+                    for(int i = 0; i < 7; i++) {
+                        generateUI(statsNameLookup[i], ((ArrayList<Long>) dataSnapshot.getValue()).get(i).toString(), ADD_PLAYER_INFO);
+                    }
+                }
             }
 
             @Override

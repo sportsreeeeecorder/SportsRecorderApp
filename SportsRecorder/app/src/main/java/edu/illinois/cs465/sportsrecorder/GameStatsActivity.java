@@ -96,7 +96,7 @@ public class GameStatsActivity extends Activity {
                                 public void onDataChange(@NonNull DataSnapshot nameDataSnapshot) {
                                     Log.d("LOG", "FIREBASE: retrieved datasnapshot of value " + nameDataSnapshot.toString());
                                     try {
-                                        generateUI(nameDataSnapshot.getValue().toString(), currentPlayer, ADD_PLAYER);
+                                        generateUI(nameDataSnapshot.getValue().toString(), nameDataSnapshot.getRef().getParent().getKey(), ADD_PLAYER);
                                     } catch (NullPointerException e) {
                                         //do nothing basically
                                     }

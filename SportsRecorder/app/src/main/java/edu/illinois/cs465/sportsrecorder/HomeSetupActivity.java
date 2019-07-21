@@ -33,7 +33,6 @@ public class HomeSetupActivity extends Activity {
     LinearLayout addHomePlayerList;
 
     HashMap<String, String> userLookupList;
-    ArrayList<String> selectedPlayers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +43,8 @@ public class HomeSetupActivity extends Activity {
         gameRef = FirebaseDatabase.getInstance().getReference();
 
         userLookupList = new HashMap<>();
-        selectedPlayers = new ArrayList<>();
+        UserInfo.homeList = new ArrayList<>();
+        UserInfo.codeNameLinkage = new HashMap<>();
 
         nameField = (EditText) findViewById(R.id.homeNameField);
         colorView = (TextView) findViewById(R.id.homeColorField);
@@ -58,7 +58,7 @@ public class HomeSetupActivity extends Activity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 try {
                     for(DataSnapshot player: dataSnapshot.getChildren()) {
-                        userLookupList.put(player.getValue().toString(), player.getKey());
+                        userLookupList.put(player.getKey(), player.getValue().toString());
                         generateUI(player.getValue().toString(), player.getKey());
                     }
                 } catch (NullPointerException e) {
@@ -87,12 +87,17 @@ public class HomeSetupActivity extends Activity {
                 gameRef.child("games").child(gameCode).child("home_properties").child("color").setValue(colorView.getText().toString().replace("Color: ", ""));
 
                 Intent homeToAwayIntent = new Intent(HomeSetupActivity.this, AwaySetupActivity.class);
-                for(int i = 0; i < selectedPlayers.size(); i++) {
-                    for(int j = 0; j < 7; j++) {
-                        gameRef.child("games").child(gameCode).child("players").child("home").child(selectedPlayers.get(i)).child("" + j).setValue(0);
+                if(!UserInfo.homeList.isEmpty()) {
+                    for (int i = 0; i < UserInfo.homeList.size(); i++) {
+                        for (int j = 0; j < 7; j++) {
+                            gameRef.child("games").child(gameCode).child("players").child("home").child(UserInfo.homeList.get(i)).child("" + j).setValue(0);
+                            gameRef.child("players").child(UserInfo.homeList.get(i)).child("games_played").child(gameCode).child("" + j).setValue(0);
+                        }
+                        UserInfo.codeNameLinkage.put(UserInfo.homeList.get(i), userLookupList.get(UserInfo.homeList.get(i)));
                     }
                 }
-                homeToAwayIntent.putExtra(getString(R.string.intentHomePlayersList), selectedPlayers.toArray());
+                UserInfo.homeColor = colorView.getText().toString().replace("Color: ", "");
+                UserInfo.homeName = " ".equals(nameField.getText().toString() + " ")? "Home" : nameField.getText().toString();
                 startActivity(homeToAwayIntent);
                 finish();
             }
@@ -112,7 +117,7 @@ public class HomeSetupActivity extends Activity {
             if(v instanceof TextView) {
                 String playerSelected = ((TextView) v).getHint().toString();
                 v.setVisibility(View.GONE);
-                selectedPlayers.add(playerSelected);
+                UserInfo.homeList.add(playerSelected);
             }
         }
     };
