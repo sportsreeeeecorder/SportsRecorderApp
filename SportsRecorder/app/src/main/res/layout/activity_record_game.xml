@@ -8,12 +8,6 @@
     android:orientation="vertical"
     tools:context=".RecordGameActivity" >
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/scoreAndQuarterView"
-        />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,106 +16,54 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/addAssistsButton"
+            android:id="@+id/button4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add Assist" />
-        <Button
-            android:id="@+id/addPointsButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Add Points" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/addPointsLL"
-            android:orientation="horizontal"
-            android:visibility="gone"
-            >
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:id="@+id/addOneBtn"
-                android:text="+1" />
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:id="@+id/addTwoBtn"
-                android:text="+2" />
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:id="@+id/addThreeBtn"
-                android:text="+3" />
-        </LinearLayout>
+            android:text="Button" />
 
         <Button
-            android:id="@+id/addReboundButton"
+            android:id="@+id/button3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add a Rebound" />
+            android:text="Button" />
 
         <Button
-            android:id="@+id/addFoulButton"
+            android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add a Foul" />
+            android:text="Button" />
 
         <Button
-            android:id="@+id/addTurnoverButton"
+            android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add a Turnover" />
+            android:text="Button" />
     </LinearLayout>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/newQuarterButton"
-        android:text="Next Quarter"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:id="@+id/scoreOptionsLL"
-        android:orientation="horizontal"
-        android:visibility="gone">
+        android:orientation="horizontal">
 
-        <ScrollView
+        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:id="@+id/homeChoices">
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Home"
-                    android:hint="HomeOther"
-                    android:id="@+id/homeOtherScore"/>
-            </LinearLayout>
-        </ScrollView>
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="TextView" />
 
-        <ScrollView
+        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:id="@+id/awayChoices">
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Away"
-                    android:hint="AwayOther"
-                    android:id="@+id/awayOtherScore"/>
-            </LinearLayout>
-        </ScrollView>
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="TextView" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="TextView" />
     </LinearLayout>
 
 </LinearLayout>
