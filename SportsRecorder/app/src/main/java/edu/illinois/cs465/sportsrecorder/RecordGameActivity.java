@@ -30,7 +30,7 @@ public class RecordGameActivity extends Activity {
     LinearLayout addPointsLL, scoreOptionsLL, homeChoices, awayChoices;
 
     Button awayOtherScore, homeOtherScore, addPointsButton, addOneBtn, addTwoBtn, addThreeBtn, addFoul, addTurnover, addRebound, addAssist, newQuarter;
-    TextView gameInfoView;
+    TextView homeScoreView, awayScoreView, quarterView;
 
     String events[] = {"", "", "", ""};
     HashMap<String, String> playerScores;
@@ -48,7 +48,9 @@ public class RecordGameActivity extends Activity {
         layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         playerScores = new HashMap<>();
 
-        gameInfoView = (TextView) findViewById(R.id.scoreAndQuarterView);
+        homeScoreView = (TextView) findViewById(R.id.homeScoreView);
+        awayScoreView = (TextView) findViewById(R.id.awayScoreView);
+        quarterView = (TextView) findViewById(R.id.quarterView);
         updateHeader();
 
         addPointsLL = (LinearLayout) findViewById(R.id.addPointsLL);
@@ -185,7 +187,9 @@ public class RecordGameActivity extends Activity {
             default: quarterName = "1st Quarter";
         }
 
-        gameInfoView.setText("Home: " + homeOverall + " | " + quarterName + " | " + "Away: " + awayOverall);
+        homeScoreView.setText("H: " + homeOverall);
+        awayScoreView.setText("A: " + awayOverall);
+        quarterView.setText(quarterName);
     }
 
     void updateDB(String pEventToAdd, boolean pIsHome) {

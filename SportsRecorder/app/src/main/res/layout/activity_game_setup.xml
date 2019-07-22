@@ -5,24 +5,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/deepPurple"
     tools:context=".GameSetupActivity">
 
-    <TextView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="15dp"
+        android:orientation="vertical"
+        android:gravity="center">
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="@drawable/cerclebackgroundpurple"
+            android:padding="10dp"
+            android:src="@drawable/ic_create_black_24dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Create a Game"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Game Information"/>
-
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@android:color/white"
+        android:padding="10dp"
+        android:layout_margin="15dp">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/gameCode"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:padding="10dp"
+        android:gravity="center"
         android:text="Retrieving Game Code..."/>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/locationField"
-        android:hint="Location"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -30,28 +54,37 @@
         android:id="@+id/gameNameField"
         android:hint="Game Name"/>
 
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/locationField"
+            android:hint="Location"/>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
+        android:gravity="center"
         android:orientation="horizontal">
 
-        <TextView
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="[X]"/>
-        <TextView
+            android:src="@drawable/ic_step_current_24dp" />
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="[ ]"/>
-        <TextView
+            android:src="@drawable/ic_step_different_24dp" />
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="[ ]"/>
+            android:src="@drawable/ic_step_different_24dp" />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/gameToHome"
             android:text="Next"/>
+    </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>
