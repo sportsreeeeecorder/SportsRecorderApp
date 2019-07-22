@@ -2,6 +2,7 @@ package edu.illinois.cs465.sportsrecorder;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -339,12 +340,16 @@ public class RecordGameActivity extends Activity {
 
     void generateUI(String pID, boolean pIsHome) {
         Button button = new Button(RecordGameActivity.this);
+        button.setBackground(getDrawable(R.drawable.bottom_box));
 
         if(pIsHome) {
             homeChoices.addView(button);
+            button.setBackgroundColor(Color.parseColor("#"+getString(R.string.red_hex)));
         } else {
             awayChoices.addView(button);
+            button.setBackgroundColor(Color.parseColor("#"+getString(R.string.blue_hex)));
         }
+
         button.setLayoutParams(layoutParams);
         button.setPadding(20, 25, 20, 25);
         button.setText(UserInfo.codeNameLinkage.get(pID));

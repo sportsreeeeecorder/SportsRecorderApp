@@ -10,26 +10,37 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:orientation="horizontal"
         android:gravity="center">
         <TextView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:id="@+id/homeScoreView"
         android:layout_weight="1"
+            android:text="Home Score"
+            android:gravity="center"
+            android:background="@color/homeColor"
+            android:layout_marginRight="10dp"
         />
         <TextView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:id="@+id/quarterView"
         android:layout_weight="2"
+            android:text="Current Quarter"
+            android:gravity="center"
+            android:background="#CCCCCC"
         />
         <TextView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:id="@+id/awayScoreView"
         android:layout_weight="1"
+            android:text="Away Score"
+            android:gravity="center"
+            android:background="@color/awayColor"
+            android:layout_marginLeft="10dp"
         />
 
     </LinearLayout>
@@ -39,9 +50,9 @@
         android:id="@+id/newQuarterButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#FF5722"
+        android:backgroundTint="@color/colorPrimary"
         android:text="Next Quarter"
-        android:textColor="@color/colorPrimary"/>
+        android:textColor="@android:color/black"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -136,12 +147,18 @@
                     android:id="@+id/homeChoices"
                     android:layout_gravity="bottom">
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@android:color/white"
+                    />
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Home"
                     android:hint="HomeOther"
                     android:layout_gravity="bottom"
+                    android:background="@color/homeColor"
                     android:id="@+id/homeOtherScore"/>
             </LinearLayout>
         </ScrollView>
@@ -167,12 +184,17 @@
                     android:layout_gravity="bottom">
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@android:color/white"
+                    />
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Away"
                     android:hint="AwayOther"
-
+                    android:background="@color/awayColor"
                     android:layout_gravity="bottom"
                     android:id="@+id/awayOtherScore"/>
             </LinearLayout>

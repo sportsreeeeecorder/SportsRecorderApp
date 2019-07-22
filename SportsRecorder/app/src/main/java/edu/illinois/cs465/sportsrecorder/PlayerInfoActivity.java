@@ -125,7 +125,6 @@ public class PlayerInfoActivity extends Activity {
                 Intent switchToViewActivity = new Intent(PlayerInfoActivity.this, GameStatsActivity.class);
                 switchToViewActivity.putExtra(getString(R.string.intentGameID), intentGameID);
                 startActivity(switchToViewActivity);
-                finish();
             }
         }
     };

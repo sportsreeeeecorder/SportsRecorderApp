@@ -12,4 +12,5 @@
     <string name="intentHomePlayersList">INTENT_HOME_PLAYERS</string>
     <string name="red_hex">F7382A</string>
     <string name="blue_hex">4D91FF</string>
+    <string name="orange_hex">FF6600</string>
 </resources>
