@@ -6,12 +6,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/green"
     tools:context=".SavedGames">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/my_saved_games" />
+        android:layout_height="100dp"
+        android:layout_margin="15dp"
+        android:orientation="vertical"
+        android:gravity="center">
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="@drawable/cerclebackgroundgreen"
+            android:padding="10dp"
+            android:src="@drawable/ic_save_black_24dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="My Saved Games"
+            android:textStyle="bold" />
+    </LinearLayout>
 
 
     <LinearLayout
@@ -21,23 +38,37 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginBottom="10dp"
             android:visibility="gone"
             android:id="@+id/addGameField"
             android:hint="Enter your code here"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginBottom="10dp"
             android:visibility="gone"
             android:id="@+id/addGameSubmit"
-            android:text="Search"/>
+            android:text="Add Game"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginBottom="10dp"
             android:id="@+id/addGamePlus"
-            android:text="+"
+            android:text="Save a Game"
             android:visibility="visible" />
     </LinearLayout>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginBottom="10dp"
+        android:padding="5dp"
+        android:background="#FFFFFFFF">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -45,5 +76,6 @@
         android:id="@+id/savedGamesList">
 
     </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

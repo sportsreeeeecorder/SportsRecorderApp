@@ -6,12 +6,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/yellow"
     tools:context=".PlayerActivity">
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/my_players" />
+        android:layout_height="100dp"
+        android:layout_margin="15dp"
+        android:orientation="vertical"
+        android:gravity="center">
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="@drawable/cerclebackgroundyello"
+            android:padding="10dp"
+            android:src="@drawable/ic_people_black_24dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="My Saved Players"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,29 +36,44 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginBottom="10dp"
             android:visibility="gone"
             android:id="@+id/addPlayerField"
             android:hint="Enter your code here"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginBottom="10dp"
             android:visibility="gone"
             android:id="@+id/addPlayerSubmit"
-            android:text="Search"/>
+            android:text="Add Player"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginBottom="10dp"
             android:id="@+id/addPlayerPlus"
-            android:text="+"
+            android:text="Add a Player"
             android:visibility="visible" />
     </LinearLayout>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginBottom="10dp"
+        android:padding="5dp"
+        android:background="#FFFFFFFF">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:id="@+id/savedPlayersList">
 
     </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

@@ -2,6 +2,7 @@ package edu.illinois.cs465.sportsrecorder;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -132,13 +133,20 @@ public class SavedGames extends Activity {
 
     private void generateUI(String pName, String pID) {
         TextView textView = new TextView(SavedGames.this);
+        View greyPadding = new View(SavedGames.this);
 
         savedGamesLayout.addView(textView);
+        savedGamesLayout.addView(greyPadding);
+
         textView.setLayoutParams(layoutParams);
         textView.setPadding(20, 25, 20, 25);
-        textView.setText(pName);
+        textView.setText(pName + " - " + pID);
         textView.setHint(pID);
         textView.setHapticFeedbackEnabled(true);
         textView.setOnClickListener(gameClickListener);
+
+        greyPadding.setLayoutParams(layoutParams);
+        greyPadding.setBackgroundColor(Color.DKGRAY);
+        greyPadding.setMinimumHeight(1);
     }
 }

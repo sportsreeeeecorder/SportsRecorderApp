@@ -2,6 +2,7 @@ package edu.illinois.cs465.sportsrecorder;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -47,12 +48,12 @@ public class PlayerActivity extends Activity {
         addPlayerSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(playerNameField.length() == 0) {
+                if(playerNameField.getText().toString().length() == 0) {
                     Toast.makeText(PlayerActivity.this, "Player field cannot be blank!", Toast.LENGTH_SHORT).show();
                     return;
-                } else if(playerNameField.length() != 5) {
+                } else if(playerNameField.getText().toString().length() != 5) {
                     String generatedCode = generateCode(5);
-                    addPlayerSubmit.setText(generatedCode);
+                    addPlayerSubmit.setText("Loading data...");
                     newPlayerRef = FirebaseDatabase.getInstance().getReference();
                     newPlayerRef.child("players").child(generatedCode).child("player_name").setValue(playerNameField.getText().toString());
                     for(int i = 0; i < 7; i++) {
@@ -146,14 +147,21 @@ public class PlayerActivity extends Activity {
 
     private void generateUI(String pName, String pID) {
         TextView textView = new TextView(PlayerActivity.this);
+        View greyPadding = new View(PlayerActivity.this);
 
         savedPlayersLayout.addView(textView);
+        savedPlayersLayout.addView(greyPadding);
+
         textView.setLayoutParams(layoutParams);
         textView.setPadding(20, 25, 20, 25);
-        textView.setText(pName);
+        textView.setText(pName + " - " + pID);
         textView.setHint(pID);
         textView.setHapticFeedbackEnabled(true);
         textView.setOnClickListener(playerClickListener);
+
+        greyPadding.setLayoutParams(layoutParams);
+        greyPadding.setBackgroundColor(Color.DKGRAY);
+        greyPadding.setMinimumHeight(1);
     }
 
     String generateCode(int pLength) {
