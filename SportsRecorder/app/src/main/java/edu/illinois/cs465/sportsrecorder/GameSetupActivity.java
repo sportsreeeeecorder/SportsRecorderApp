@@ -42,6 +42,8 @@ public class GameSetupActivity extends Activity {
             public void onClick(View v) {
                 if(!" ".equals(nameField.getText().toString() + " ")) {
                     gameRef.child("games").child(gameCode).child("name").setValue(nameField.getText().toString());
+                } else {
+                    gameRef.child("games").child(gameCode).child("name").setValue("Unnamed Game");
                 }
 
                 if(!" ".equals(locationField.getText().toString() + " ")) {

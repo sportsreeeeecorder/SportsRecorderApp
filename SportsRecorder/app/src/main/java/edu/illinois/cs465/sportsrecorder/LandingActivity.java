@@ -4,11 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.LinearLayout;
 
 public class LandingActivity extends Activity implements View.OnClickListener {
 
-    Button savedGamesButton, playersButton, newGameButton;
+    LinearLayout savedGamesButton, playersButton, newGameButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,9 +16,9 @@ public class LandingActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_landing);
         getActionBar().hide();
 
-        savedGamesButton = (Button) findViewById(R.id.savedGames);
-        playersButton = (Button) findViewById(R.id.savedPlayers);
-        newGameButton = (Button) findViewById(R.id.newGame);
+        savedGamesButton = (LinearLayout) findViewById(R.id.savedGames);
+        playersButton = (LinearLayout) findViewById(R.id.savedPlayers);
+        newGameButton = (LinearLayout) findViewById(R.id.newGame);
 
         savedGamesButton.setOnClickListener(this);
         playersButton.setOnClickListener(this);

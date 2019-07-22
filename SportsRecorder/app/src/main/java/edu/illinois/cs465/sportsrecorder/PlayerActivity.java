@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -46,7 +47,10 @@ public class PlayerActivity extends Activity {
         addPlayerSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(playerNameField.length() != 5) {
+                if(playerNameField.length() == 0) {
+                    Toast.makeText(PlayerActivity.this, "Player field cannot be blank!", Toast.LENGTH_SHORT).show();
+                    return;
+                } else if(playerNameField.length() != 5) {
                     String generatedCode = generateCode(5);
                     addPlayerSubmit.setText(generatedCode);
                     newPlayerRef = FirebaseDatabase.getInstance().getReference();
