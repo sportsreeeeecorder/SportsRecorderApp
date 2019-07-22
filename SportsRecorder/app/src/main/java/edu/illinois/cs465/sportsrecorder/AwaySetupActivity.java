@@ -23,10 +23,9 @@ import androidx.annotation.NonNull;
 
 public class AwaySetupActivity extends Activity {
 
-    Button awayToRecord, loadAwayPlayerListButton;
+    Button awayToRecord;
     DatabaseReference gameRef, myPlayersRef;
     String gameCode = UserInfo.gameCode;
-    TextView colorView;
     EditText nameField;
 
     LinearLayout.LayoutParams layoutParams;
@@ -46,7 +45,6 @@ public class AwaySetupActivity extends Activity {
         UserInfo.awayList = new ArrayList<>();
 
         nameField = (EditText) findViewById(R.id.awayNameField);
-        colorView = (TextView) findViewById(R.id.awayColorField);
         addAwayPlayerList = (LinearLayout) findViewById(R.id.addAwayPlayerList);
 
         layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -74,7 +72,6 @@ public class AwaySetupActivity extends Activity {
         });
 
         awayToRecord = (Button) findViewById(R.id.awayToRecord);
-        loadAwayPlayerListButton = (Button) findViewById(R.id.loadAwayPlayerListButton);
 
         awayToRecord.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,7 +82,7 @@ public class AwaySetupActivity extends Activity {
                     gameRef.child("games").child(gameCode).child("away_properties").child("name").setValue("Away");
                 }
 
-                gameRef.child("games").child(gameCode).child("away_properties").child("color").setValue(colorView.getText().toString().replace("Color: ", ""));
+                gameRef.child("games").child(gameCode).child("away_properties").child("color").setValue(getString(R.string.blue_hex));
 
                 Intent awayToRecordIntent = new Intent(AwaySetupActivity.this, RecordGameActivity.class);
                 if(!UserInfo.awayList.isEmpty()) {
@@ -97,17 +94,10 @@ public class AwaySetupActivity extends Activity {
                         UserInfo.codeNameLinkage.put(UserInfo.awayList.get(i), userLookupList.get(UserInfo.awayList.get(i)));
                     }
                 }
-                UserInfo.awayColor = colorView.getText().toString().replace("Color: ", "");
+                UserInfo.awayColor = getString(R.string.blue_hex);
                 UserInfo.awayName = " ".equals(nameField.getText().toString() + " ")? "Away" : nameField.getText().toString();
                 startActivity(awayToRecordIntent);
                 finish();
-            }
-        });
-
-        loadAwayPlayerListButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addAwayPlayerList.setVisibility(View.VISIBLE);
             }
         });
     }

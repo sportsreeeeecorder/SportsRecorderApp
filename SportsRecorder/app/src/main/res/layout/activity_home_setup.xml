@@ -6,63 +6,81 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/deepPurple"
     tools:context=".HomeSetupActivity">
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Home Information"/>
+        android:text="Home Team"
+        android:textColor="#fcfcfc"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:padding="15dp"
+        android:layout_margin="10dp"
+        />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:padding="10dp"
+        android:layout_margin="15dp"
+        android:orientation="vertical"
+        android:gravity="center">
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="3dp"
+        android:hint="Enter Team Name"
         android:id="@+id/homeNameField"
-        android:hint="Team Name"/>
+        android:textSize="20dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/homeColorField"
-        android:text="Color: red"/>
+        android:gravity="center"
+        android:textSize="20dp"
+        android:text="My Players"
+        android:textStyle="bold"/>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scrollbars="vertical"
+            android:background="#EEEEEE">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:id="@+id/addHomePlayerList">
+            </LinearLayout>
+        </ScrollView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_step_different_24dp" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_step_current_24dp" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_step_different_24dp" />
     <Button
-        android:layout_width="match_parent"
+        android:id="@+id/homeToAway"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/loadHomePlayerListButton"
-        android:text="Add Player"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:id="@+id/addHomePlayerList"
-        android:visibility="gone"
-        >
-
+        android:layout_gravity="center"
+        android:text="Next" />
+        </LinearLayout>
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="[ ]"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="[X]"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="[ ]"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/homeToAway"
-            android:text="Next"/>
-    </LinearLayout>
-
 </LinearLayout>

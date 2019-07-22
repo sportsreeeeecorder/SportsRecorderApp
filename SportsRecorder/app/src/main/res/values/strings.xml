@@ -10,4 +10,6 @@
     <string name="intentGameID">INTENT_GAME_ID</string>
     <string name="intentPlayerID">INTENT_PLAYER_ID</string>
     <string name="intentHomePlayersList">INTENT_HOME_PLAYERS</string>
+    <string name="red_hex">F7382A</string>
+    <string name="blue_hex">4D91FF</string>
 </resources>

@@ -23,10 +23,9 @@ import androidx.annotation.NonNull;
 
 public class HomeSetupActivity extends Activity {
 
-    Button homeToAwayButton, loadHomePlayerListButton;
+    Button homeToAwayButton;
     DatabaseReference gameRef, myPlayersRef;
     String gameCode = UserInfo.gameCode;
-    TextView colorView;
     EditText nameField;
 
     LinearLayout.LayoutParams layoutParams;
@@ -47,7 +46,6 @@ public class HomeSetupActivity extends Activity {
         UserInfo.codeNameLinkage = new HashMap<>();
 
         nameField = (EditText) findViewById(R.id.homeNameField);
-        colorView = (TextView) findViewById(R.id.homeColorField);
         addHomePlayerList = (LinearLayout) findViewById(R.id.addHomePlayerList);
 
         layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -73,7 +71,6 @@ public class HomeSetupActivity extends Activity {
         });
 
         homeToAwayButton = (Button) findViewById(R.id.homeToAway);
-        loadHomePlayerListButton = (Button) findViewById(R.id.loadHomePlayerListButton);
 
         homeToAwayButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,7 +81,7 @@ public class HomeSetupActivity extends Activity {
                     gameRef.child("games").child(gameCode).child("home_properties").child("name").setValue("Home");
                 }
 
-                gameRef.child("games").child(gameCode).child("home_properties").child("color").setValue(colorView.getText().toString().replace("Color: ", ""));
+                gameRef.child("games").child(gameCode).child("home_properties").child("color").setValue(getString(R.string.red_hex));
 
                 Intent homeToAwayIntent = new Intent(HomeSetupActivity.this, AwaySetupActivity.class);
                 if(!UserInfo.homeList.isEmpty()) {
@@ -96,17 +93,10 @@ public class HomeSetupActivity extends Activity {
                         UserInfo.codeNameLinkage.put(UserInfo.homeList.get(i), userLookupList.get(UserInfo.homeList.get(i)));
                     }
                 }
-                UserInfo.homeColor = colorView.getText().toString().replace("Color: ", "");
+                UserInfo.homeColor = getString(R.string.red_hex);
                 UserInfo.homeName = " ".equals(nameField.getText().toString() + " ")? "Home" : nameField.getText().toString();
                 startActivity(homeToAwayIntent);
                 finish();
-            }
-        });
-
-        loadHomePlayerListButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addHomePlayerList.setVisibility(View.VISIBLE);
             }
         });
     }
