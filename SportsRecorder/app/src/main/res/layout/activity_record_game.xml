@@ -59,42 +59,11 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/addAssistsButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Add Assist" />
-
-        <Button
-            android:id="@+id/addReboundButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Add a Rebound" />
-
-        <Button
-            android:id="@+id/addFoulButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Add a Foul" />
-
-        <Button
-            android:id="@+id/addTurnoverButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Add a Turnover" />
-
-        <Button
-            android:id="@+id/addPointsButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Add Points" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/addPointsLL"
             android:orientation="horizontal"
-            android:visibility="gone"
             >
             <Button
                 android:layout_width="wrap_content"
@@ -115,6 +84,43 @@
                 android:layout_weight="1"
                 android:text="+3" />
         </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/addAssistsButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Assist" />
+
+        <Button
+            android:id="@+id/addTurnoverButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Turnover" />
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+        <Button
+            android:id="@+id/addReboundButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Rebound" />
+
+        <Button
+            android:id="@+id/addFoulButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Foul" />
+        </LinearLayout>
     </LinearLayout>
 
 
@@ -124,7 +130,6 @@
         android:id="@+id/scoreOptionsLL"
         android:layout_gravity="fill_vertical"
         android:layout_weight="1"
-        android:visibility="gone"
         android:orientation="horizontal"
         android:baselineAligned="false">
 

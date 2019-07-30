@@ -30,7 +30,7 @@ public class RecordGameActivity extends Activity {
     LinearLayout.LayoutParams layoutParams;
     LinearLayout addPointsLL, scoreOptionsLL, homeChoices, awayChoices;
 
-    Button awayOtherScore, homeOtherScore, addPointsButton, addOneBtn, addTwoBtn, addThreeBtn, addFoul, addTurnover, addRebound, addAssist, newQuarter;
+    Button awayOtherScore, homeOtherScore, addOneBtn, addTwoBtn, addThreeBtn, addFoul, addTurnover, addRebound, addAssist, newQuarter;
     TextView homeScoreView, awayScoreView, quarterView;
 
     String events[] = {"", "", "", ""};
@@ -65,7 +65,6 @@ public class RecordGameActivity extends Activity {
         homeOtherScore.setOnClickListener(updateToPlayerClickListener);
         awayOtherScore.setOnClickListener(updateToPlayerClickListener);
 
-        addPointsButton = (Button) findViewById(R.id.addPointsButton);
         addAssist = (Button) findViewById(R.id.addAssistsButton);
         addOneBtn = (Button) findViewById(R.id.addOneBtn);
         addTwoBtn = (Button) findViewById(R.id.addTwoBtn);
@@ -74,7 +73,6 @@ public class RecordGameActivity extends Activity {
         addTurnover = (Button) findViewById(R.id.addTurnoverButton);
         addRebound = (Button) findViewById(R.id.addReboundButton);
 
-        addPointsButton.setOnClickListener(showItemListener);
         addAssist.setOnClickListener(showItemListener);
         addOneBtn.setOnClickListener(showItemListener);
         addTwoBtn.setOnClickListener(showItemListener);
@@ -95,6 +93,8 @@ public class RecordGameActivity extends Activity {
             generateUI(UserInfo.awayList.get(i), false);
             playerScores.put(UserInfo.awayList.get(i), "0,0,0,0,0,0,0");
         }
+
+        greyOut();
     }
 
     View.OnClickListener newQuarterListener = new View.OnClickListener() {
@@ -110,8 +110,8 @@ public class RecordGameActivity extends Activity {
                 finish();
             }
 
-            addPointsLL.setVisibility(View.GONE);
             updateHeader();
+            greyOut();
         }
     };
 
@@ -120,9 +120,6 @@ public class RecordGameActivity extends Activity {
         public void onClick(View v) {
             if(v instanceof Button) {
                 switch (v.getId()) {
-                    case R.id.addPointsButton:
-                        addPointsLL.setVisibility(View.VISIBLE);
-                        return;
                     case R.id.addAssistsButton:
                         currentEvent = ADD_ASSIST;
                         break;
@@ -136,22 +133,18 @@ public class RecordGameActivity extends Activity {
                         currentEvent = ADD_3PT;
                         break;
                     case R.id.addReboundButton:
-                        addPointsLL.setVisibility(View.GONE);
                         currentEvent = ADD_REBOUND;
                         break;
                     case R.id.addFoulButton:
-                        addPointsLL.setVisibility(View.GONE);
                         currentEvent = ADD_FOUL;
                         break;
                     case R.id.addTurnoverButton:
-                        addPointsLL.setVisibility(View.GONE);
                         currentEvent = ADD_TURNOVER;
                         break;
                     default:
-                        addPointsLL.setVisibility(View.GONE);
                         return;
                 }
-                scoreOptionsLL.setVisibility(View.VISIBLE);
+                colorIn();
             }
         }
     };
@@ -170,7 +163,7 @@ public class RecordGameActivity extends Activity {
                 } else {
                     updateDB(currentEvent, false, forUser);
                 }
-                addPointsLL.setVisibility(View.GONE);
+                greyOut();
             }
         }
     };
@@ -196,6 +189,10 @@ public class RecordGameActivity extends Activity {
     void updateDB(String pEventToAdd, boolean pIsHome) {
         String eventValue = pIsHome ? "H" : "A";
         eventValue += pEventToAdd;
+
+        if(pEventToAdd == null) {
+            return;
+        }
 
         String branchToAddTo;
 
@@ -234,12 +231,16 @@ public class RecordGameActivity extends Activity {
         gameRef.child("events").child(branchToAddTo).child((eventSplit.length - 1) + "").setValue(eventValue);
 
         updateHeader();
-        scoreOptionsLL.setVisibility(View.GONE);
+        greyOut();
     }
 
     void updateDB(String pEventToAdd, boolean pIsHome, String pUser) {
         String eventValue = pIsHome ? "H" : "A";
         eventValue += pEventToAdd;
+
+        if(pEventToAdd == null) {
+            return;
+        }
 
         String branchToAddTo;
 
@@ -335,7 +336,49 @@ public class RecordGameActivity extends Activity {
         });
 
         updateHeader();
-        scoreOptionsLL.setVisibility(View.GONE);
+        greyOut();
+    }
+
+    private void colorIn() {
+        View currentView;
+        int childrenToDo = homeChoices.getChildCount();
+        for(int i = 0; i < childrenToDo; i++) {
+            currentView = homeChoices.getChildAt(i);
+            if(currentView instanceof Button) {
+                currentView.setBackgroundColor(Color.parseColor("#"+getString(R.string.red_hex)));
+            }
+        }
+        childrenToDo = awayChoices.getChildCount();
+        for(int i = 0; i < childrenToDo; i++) {
+            currentView = awayChoices.getChildAt(i);
+            if(currentView instanceof Button) {
+                currentView.setBackgroundColor(Color.parseColor("#"+getString(R.string.blue_hex)));
+            }
+        }
+
+        homeOtherScore.setBackgroundColor(Color.parseColor("#"+getString(R.string.red_hex)));
+        awayOtherScore.setBackgroundColor(Color.parseColor("#"+getString(R.string.blue_hex)));
+    }
+
+    private void greyOut() {
+        View currentView;
+        int childrenToDo = homeChoices.getChildCount();
+        for(int i = 0; i < childrenToDo; i++) {
+            currentView = homeChoices.getChildAt(i);
+            if(currentView instanceof Button) {
+                currentView.setBackgroundColor(Color.GRAY);
+            }
+        }
+        childrenToDo = awayChoices.getChildCount();
+        for(int i = 0; i < childrenToDo; i++) {
+            currentView = awayChoices.getChildAt(i);
+            if(currentView instanceof Button) {
+                currentView.setBackgroundColor(Color.GRAY);
+            }
+        }
+
+        homeOtherScore.setBackgroundColor(Color.GRAY);
+        awayOtherScore.setBackgroundColor(Color.GRAY);
     }
 
     void generateUI(String pID, boolean pIsHome) {
